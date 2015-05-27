@@ -7,14 +7,12 @@
 
 # Pretty print.
 puts () {
-
     echo
     echo -e "\033[0;96m* $@\033[0;39m"
 }
 
 # Insert line into file if not present.
 line () {
-
     content="$1"
     file="$2"
 
@@ -68,8 +66,8 @@ yum install -y curl
         vagrant
 
 # Sudo.
-line "vagrant ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
 sed -i 's/^\(Defaults.*requiretty\)/#\1/' /etc/sudoers
+line "vagrant ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
 
 # SSH.
 sed -i 's/^\(UseDNS.*yes\)/#\1/' /etc/ssh/sshd_config
