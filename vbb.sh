@@ -38,7 +38,7 @@ fi
 /media/VBoxLinuxAdditions.run
 
 # Package.
-yum install -y wget
+yum install -y curl
 
 # Vagrant user.
 ! getent passwd vagrant >/dev/null 2>&1 && \
@@ -85,7 +85,7 @@ done
 # Credentials.
 su - vagrant -c "
 mkdir -p ~/.ssh ;\
-wget https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -O ~/.ssh/authorized_keys ;\
+curl -sk https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -o ~/.ssh/authorized_keys ;\
 chmod 0700 ~/.ssh ;\
 chmod 0600 ~/.ssh/authorized_keys
 "
