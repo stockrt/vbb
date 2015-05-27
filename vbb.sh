@@ -3,7 +3,7 @@
 # Vagrant Base Box (vbb) setup steps for CentOS/RedHat/Fedora.
 #
 # Author: Rogério Schneider <stockrt@gmail.com>
-# Date: 27/05/2015
+# Date: May 27, 2015
 
 puts () {
     # Pretty print.
