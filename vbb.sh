@@ -103,3 +103,7 @@ rm -f /home/vagrant/.bash_history
 history -c
 history -a
 rm -f .bash_history
+
+# Routes.
+rm -f /etc/sysconfig/network-scripts/route-*
+service network restart
