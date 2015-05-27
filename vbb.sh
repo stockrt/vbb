@@ -35,7 +35,7 @@ fi
 # VirtualBox Guest Additions.
 # Must first use VirtualBox shortcut "Host+D"
 # or use menu "Devices / Insert Guest Additions CD Image..."
-/media/cdrom/VBoxLinuxAdditions.run
+/media/VBoxLinuxAdditions.run
 
 # Package.
 yum install -y wget
