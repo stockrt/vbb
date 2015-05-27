@@ -91,5 +91,7 @@ chmod 0600 ~/.ssh/authorized_keys
 "
 
 # Clean history.
-su - vagrant -c "history -c"
+rm -f /home/vagrant/.bash_history
 history -c
+history -a
+rm -f .bash_history
