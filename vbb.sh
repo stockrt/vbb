@@ -32,6 +32,12 @@ then
     exit 1
 fi
 
+# Routes.
+if [[ -f /etc/sysconfig/network-scripts/route-* ]]; then
+    rm -f /etc/sysconfig/network-scripts/route-*
+    service network restart
+fi
+
 # VirtualBox Guest Additions.
 # Must first use VirtualBox shortcut "Host+D"
 # or use menu "Devices / Insert Guest Additions CD Image..."
@@ -106,7 +112,3 @@ rm -f /home/vagrant/.bash_history
 history -c
 history -a
 rm -f .bash_history
-
-# Routes.
-rm -f /etc/sysconfig/network-scripts/route-*
-service network restart
