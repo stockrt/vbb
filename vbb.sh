@@ -5,15 +5,15 @@
 # Author: Rogério Schneider <stockrt@gmail.com>
 # Date: May 27, 2015
 
+# Pretty print.
 puts () {
-    # Pretty print.
 
     echo
     echo -e "\033[0;96m* $@\033[0;39m"
 }
 
+# Insert line into file if not present.
 line () {
-    # Insert line into file if not present.
 
     content="$1"
     file="$2"
