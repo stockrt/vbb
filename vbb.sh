@@ -25,7 +25,7 @@ line () {
 
 # Root.
 valid_user="root"
-current_user="$(id -u -n)"
+current_user=$(id -u -n)
 if [[ "$current_user" != "$valid_user" ]]
 then
     echo "Invalid user \"$current_user\", you must run this script as $valid_user"
@@ -69,13 +69,13 @@ for userpass in $passwords
 do
     # Remove longest match of ":*" from back of string to extract the username.
     u="${userpass%%:*}" # username
-    p="$(echo $userpass | cut -d: -f1,2)" # password
+    p=$(echo $userpass | cut -d: -f1,2) # password
 
     # Skip nonexistent users.
     getent passwd "$u" >/dev/null 2>&1 || continue
 
     # Change password.
-    if [[ "$userpass" != "$(getent shadow $u | cut -d: -f1,2)" ]]
+    if [[ "$userpass" != $(getent shadow $u | cut -d: -f1,2) ]]
     then
         puts "Ensuring password for user: $u"
         chpasswd -e <<< "$userpass"
