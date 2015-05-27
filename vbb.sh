@@ -46,6 +46,7 @@ if [[ ! -f "/usr/bin/VBoxClient" ]]; then
     if [[ ! -f "/media/VBoxLinuxAdditions.run" ]]; then
         echo 'Must first use VirtualBox shortcut "Host+D"'
         echo 'or use menu "Devices / Insert Guest Additions CD Image..."'
+        echo 'and then "mount /dev/cdrom /media"'
         exit 1
     fi
     /media/VBoxLinuxAdditions.run
