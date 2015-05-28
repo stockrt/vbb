@@ -22,7 +22,7 @@ line () {
 }
 
 # Root.
-valid_user="root"
+valid_user='root'
 current_user=$(id -u -n)
 if [[ "$current_user" != "$valid_user" ]]
 then
@@ -39,9 +39,9 @@ fi
 # VirtualBox Guest Additions.
 # Must first use VirtualBox shortcut "Host+D"
 # or use menu "Devices / Insert Guest Additions CD Image..."
-if [[ ! -f "/usr/bin/VBoxClient" ]]; then
-    puts "Installing VirtualBox Guest Additions"
-    if [[ ! -f "/media/VBoxLinuxAdditions.run" ]]; then
+if [[ ! -f '/usr/bin/VBoxClient' ]]; then
+    puts 'Installing VirtualBox Guest Additions'
+    if [[ ! -f '/media/VBoxLinuxAdditions.run' ]]; then
         echo 'Must first use VirtualBox shortcut "Host+D"'
         echo 'or use menu "Devices / Insert Guest Additions CD Image..."'
         echo 'and then "mount /dev/cdrom /media"'
@@ -55,7 +55,7 @@ yum install -y curl
 
 # Vagrant user.
 ! getent passwd vagrant >/dev/null 2>&1 && \
-    puts "Creating user: vagrant" && \
+    puts 'Creating user: vagrant' && \
     useradd \
         -U \
         -m \
@@ -67,7 +67,7 @@ yum install -y curl
 
 # Sudo.
 sed -i 's/^\(Defaults.*requiretty\)/#\1/' /etc/sudoers
-line "vagrant ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
+line 'vagrant ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 
 # SSH.
 sed -i 's/^\(UseDNS.*yes\)/#\1/' /etc/ssh/sshd_config
@@ -81,8 +81,8 @@ vagrant:$1$Pynd3ikJ$YHAFHiJiM.Ac1i7Ac1xV31
 '
 for userpass in $passwords
 do
-    # Remove longest match of ":*" from back of string to extract the username.
-    u="${userpass%%:*}" # username
+    # Remove longest match of ':*' from back of string to extract the username.
+    u=${userpass%%:*} # username
     p=$(echo $userpass | cut -d: -f1,2) # password
 
     # Skip nonexistent users.
@@ -97,12 +97,12 @@ do
 done
 
 # Credentials.
-su - vagrant -c "
+su - vagrant -c '
 mkdir -p ~/.ssh ;\
 curl -sk https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -o ~/.ssh/authorized_keys ;\
 chmod 0700 ~/.ssh ;\
 chmod 0600 ~/.ssh/authorized_keys
-"
+'
 
 # Fstab timeout and noauto.
 sed -i 's/timeo=.*/timeo=14,noauto 0 0/g' /etc/fstab
