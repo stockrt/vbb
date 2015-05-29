@@ -77,6 +77,7 @@ line 'vagrant ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 # SSH.
 sed -i 's/^\(UseDNS.*yes\)/#\1/' /etc/ssh/sshd_config
 line 'UseDNS no' /etc/ssh/sshd_config
+sed -i 's/^\(sshd:.*\)/#\1/' /etc/hosts.deny
 line 'sshd: 10.' /etc/hosts.allow -w
 
 # Passwords, generated with: openssl passwd -1 'vagrant'
