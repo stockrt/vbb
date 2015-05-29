@@ -42,10 +42,11 @@ fi
 # or use menu "Devices / Insert Guest Additions CD Image..."
 if [[ ! -f '/usr/bin/VBoxClient' ]]; then
     puts 'Installing VirtualBox Guest Additions'
+    umount /media
+    mount /dev/cdrom /media
     if [[ ! -f '/media/VBoxLinuxAdditions.run' ]]; then
         echo 'Must first use VirtualBox shortcut "Host+D"'
         echo 'or use menu "Devices / Insert Guest Additions CD Image..."'
-        echo 'and then "mount /dev/cdrom /media"'
         exit 1
     fi
     /media/VBoxLinuxAdditions.run
