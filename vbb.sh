@@ -15,8 +15,9 @@ puts () {
 line () {
     content="$1"
     file="$2"
+    extra_options="$3"
 
-    ! grep -q "$content" "$file" >/dev/null 2>&1 && \
+    ! grep -q $extra_options "$content" "$file" >/dev/null 2>&1 && \
         puts "Inserting \"$content\" into \"$file\"" && \
         echo "$content" >> "$file"
 }
@@ -72,7 +73,7 @@ line 'vagrant ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
 # SSH.
 sed -i 's/^\(UseDNS.*yes\)/#\1/' /etc/ssh/sshd_config
 line 'UseDNS no' /etc/ssh/sshd_config
-line 'sshd: 10.' /etc/hosts.allow
+line 'sshd: 10.' /etc/hosts.allow -w
 
 # Passwords, generated with: openssl passwd -1 'vagrant'
 passwords='
