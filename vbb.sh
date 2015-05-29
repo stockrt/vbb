@@ -53,7 +53,7 @@ if [[ ! -f '/usr/bin/VBoxClient' ]]; then
 fi
 
 # Package.
-yum install -y curl
+yum install -y curl wget
 
 # Vagrant user.
 ! getent passwd vagrant >/dev/null 2>&1 && \
