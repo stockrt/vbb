@@ -52,6 +52,9 @@ if [[ ! -f '/usr/bin/VBoxClient' ]]; then
     /media/VBoxLinuxAdditions.run
 fi
 
+# Yum plugin disable (subscription-manager)
+sed -i 's/^enabled=1/enabled=0/g' /etc/yum/pluginconf.d/subscription-manager.conf
+
 # Package.
 yum clean all
 yum update -y
