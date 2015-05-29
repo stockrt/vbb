@@ -111,4 +111,6 @@ sed -i 's/timeo=.*/timeo=14,noauto 0 0/g' /etc/fstab
 rm -f /home/vagrant/.bash_history
 rm -f .bash_history
 puts "Clean history for \"$current_user\" and turn the machine off running the command bellow:"
+echo
 echo 'export HISTFILE=/dev/null && halt'
+echo
