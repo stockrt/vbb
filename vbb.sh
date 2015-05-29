@@ -53,6 +53,9 @@ if [[ ! -f '/usr/bin/VBoxClient' ]]; then
 fi
 
 # Package.
+yum clean all
+yum update -y
+yum upgrade -y
 yum install -y curl wget
 
 # Vagrant user.
