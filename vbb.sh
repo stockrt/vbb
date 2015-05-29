@@ -113,6 +113,10 @@ chmod 0600 ~/.ssh/authorized_keys
 # Fstab timeout and noauto.
 sed -i 's/timeo=.*/timeo=14,noauto 0 0/g' /etc/fstab
 
+# Grub timeout
+sed -i 's/^timeout=.*/timeout=0/g' /etc/grub.conf
+grub-install /dev/sda >/dev/null
+
 # Clean history.
 rm -f /home/vagrant/.bash_history
 rm -f .bash_history
